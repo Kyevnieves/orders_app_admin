@@ -1,0 +1,40 @@
+<div class="main" id="main">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Registrar usuario</h5>
+    
+            <!-- No Labels Form -->
+            <form class="row g-3" action="/registrar/usuario" method="post">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Codigo" required name="username">
+                </div>
+                <div class="col-md-6">
+                    <input type="password" class="form-control" placeholder="Contraseña" required name="password">
+                </div>
+                <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Nombre de empresa" required name="companyname">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="RIF" required name="companyrif">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Telefono" required name="companyphone">
+                </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" placeholder="Dirección" required name="companyaddress">
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Correo electronico" required name="companyemail">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Inserte enlace de imagen" required name="companylogo">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="reset" class="btn btn-secondary">Reiniciar formulario</button>
+                </div>
+            </form><!-- End No Labels Form -->
+    
+        </div>
+    </div>
+</div>

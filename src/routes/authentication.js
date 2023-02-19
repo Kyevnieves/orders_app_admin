@@ -10,10 +10,10 @@ router.get("/signup", (req, res) => {
 });
 
 router.post(
-  "/signup",
+  "/registrar/usuario",
   passport.authenticate("local.signup", {
-    successRedirect: "/profile",
-    failureRedirect: "/signup",
+    successRedirect: "/",
+    failureRedirect: "/registrar/usuario",
     failureFlash: true,
   })
 );
