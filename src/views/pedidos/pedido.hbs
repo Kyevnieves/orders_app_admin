@@ -1,0 +1,57 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Pedido</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item">Todos los pedidos</li>
+                <li class="breadcrumb-item active">Pedido</li>
+            </ol>
+        </nav>
+        {{#each jsonFecha}}
+        <h1>Fecha: {{this}}</h1>
+        {{/each}}
+    </div>
+    <div class="card">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each jsonPedido}}
+            <tr class="fila">
+                <th scope="row">{{indice}}</th>
+                <td>{{codigo}}</td>
+                <td>{{producto}}</td>
+                <td><span class="cantidad">{{cantidad}}</span></td>
+                <td><span class="precio">{{precio}}$</span></td>
+                <td><span class="subtotal"></span></td>
+            </tr>
+            {{/each}}
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td><span class="total"></span></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</main>
