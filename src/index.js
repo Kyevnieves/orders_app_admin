@@ -1,19 +1,31 @@
 const express = require("express");
-const morgan = require("morgan");
 const { engine } = require("express-handlebars");
-const flash = require("connect-flash");
-const session = require("express-session");
-const { database } = require("./keys");
-const path = require("path");
 const MySQLStore = require("express-mysql-session");
+const session = require("express-session");
+// LEER ARCHIVO CON CADA GUARDADA
+const morgan = require("morgan");
+// MENSAJES AL USUARIO CONNECT FLASH
+const flash = require("connect-flash");
+// KEYS DATABASE
+const { database } = require("./keys");
+// LIBRERIA DIRECCIONES
+const path = require("path");
+// AUTENTICACION
 const passport = require("passport");
+require("./lib/passport");
+// CROSS ORIGIN PARA AXIOS
+var cors = require("cors");
+// CROSS ORIGIN PARA AXIOS
+// CONFIGURACION .ENV
 const { config } = require("dotenv");
 config();
+// CONFIGURACION .ENV
 // INICIALIZACIONES
 const app = express();
-require("./lib/passport");
 // CONFIGURACIONES
 app.set("port", process.env.SERVER_PORT || process.env.SERVER_PORT_LOCAL_HOST);
+
+// CONFIGURACION MOTOR DE PLANTILLAS HTML
 app.set("views", path.join(__dirname, "views"));
 app.engine(
   ".hbs",
@@ -35,6 +47,7 @@ app.use(
     store: new MySQLStore(database),
   })
 );
+app.use(cors());
 app.use(flash());
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
@@ -52,10 +65,9 @@ app.use((req, res, next) => {
 app.use(require("./routes"));
 app.use(require("./routes/authentication"));
 app.use(require("./routes/pedidos"));
+app.use(require("./routes/api_pedidos"));
 app.use(require("./routes/products"));
 app.use(require("./routes/usuarios"));
-app.use("/links", require("./routes/links"));
-
 // PUBLIC
 app.use(express.static(path.join(__dirname, "public")));
 // INICIAR EL SERVIDOR

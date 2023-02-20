@@ -12,9 +12,10 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, username, password, done) => {
-      const rows = await pool.query("SELECT * FROM users WHERE username = ?", [
-        username,
-      ]);
+      const rows = await pool.query(
+        "SELECT * FROM users WHERE username = ? && superuser = 1",
+        [username]
+      );
       if (rows.length > 0) {
         const user = rows[0];
         const validPassword = await helpers.matchPassword(
@@ -24,14 +25,10 @@ passport.use(
         if (validPassword) {
           done(null, user, req.flash("success", "Welcome " + user.username));
         } else {
-          done(null, false, req.flash("message", "Incorrect Password"));
+          done(null, false, req.flash("message", "Contraseña incorrecta"));
         }
       } else {
-        return done(
-          null,
-          false,
-          req.flash("message", "The Username does not exists.")
-        );
+        return done(null, false, req.flash("message", "El usuario no existe."));
       }
     }
   )

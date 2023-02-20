@@ -1,11 +1,11 @@
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Pedidos</h1>
+        <h1>Notificar envio pedidos</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                 <li class="breadcrumb-item">Pedidos</li>
-                <li class="breadcrumb-item active">Todos</li>
+                <li class="breadcrumb-item active">No enviados</li>
             </ol>
         </nav>
     </div>
@@ -14,18 +14,24 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Todos los pedidos</h5>
+                        <h5 class="card-title">Pedidos no enviados</h5>
                         <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                             <div class="dataTable-container">
                                 <table class="table datatable dataTable-table">
                                     <thead>
                                         <tr>
-                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">#</a></th>
-                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">Fecha</a></th>
-                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">Empresa</a></th>
-                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">Procesado</a></th>
-                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">Enviado</a></th>
-                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">Acciones</a></th>
+                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">#</a>
+                                            </th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Fecha</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Empresa</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Procesado</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Enviado</a></th>
+                                            <th scope="col" data-sortable=""><a href="#" class="datatable-sorter">Ver
+                                                    pedido</a></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -35,19 +41,17 @@
                                             <td><span class="date">{{fecha}}</span></td>
                                             <td><span class="date">{{companyname}}</span></td>
                                             {{#if procesado includeZero=false}}
-                                            <td><span class="badge bg-success status-procesado">Correcto</span></td>
+                                            <td><span class="badge bg-success">Correcto</span></td>
                                             {{else}}
-                                            <td><span class="badge bg-secondary status-procesado">En espera</span></td>
+                                            <td><span class="badge bg-secondary">En espera</span></td>
                                             {{/if}}
                                             {{#if enviado includeZero=false}}
                                             <td><span class="badge bg-success">Correcto</span></td>
                                             {{else}}
                                             <td><span class="badge bg-secondary">En espera</span></td>
                                             {{/if}}
-                                            <td>
-                                                <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
-                                                <a href="" class="btn btn-success btn-process" data-id="{{id}}"><i class="bi bi-download" data-id="{{id}}"></i></a>
-                                            </td>
+                                            <td><a href="/pedido/{{id}}" class="btn btn-primary"><i
+                                                        class="bi bi-search"></i></a></td>
                                         </tr>
                                         {{else}}
                                         <th scope="row">No hay datos</th>

@@ -14,9 +14,7 @@ const formatearDate = (date) => {
 };
 
 router.get("/pedidos", async (req, res) => {
-  const pedido = await pool.query(
-    `SELECT * FROM orders WHERE companyid = ${req.user.id}`
-  );
+  const pedido = await pool.query(`SELECT * FROM orders`);
   const pedidoObj = [];
   pedido.forEach((p) => {
     let fecha = formatearDate(p.createdAt);
@@ -45,6 +43,63 @@ router.get("/pedido/:id", async (req, res) => {
   res.render("pedidos/pedido", { jsonPedido, jsonFecha });
 });
 
+router.get("/pedidos/noprocesados", async (req, res) => {
+  const pedido = await pool.query(`SELECT * FROM orders WHERE procesado = 0`);
+  const pedidoObj = [];
+  pedido.forEach((p) => {
+    let fecha = formatearDate(p.createdAt);
+    let json = {
+      id: p.id,
+      idcorrelativo: p.idcorrelativo,
+      companyname: req.user.companyname,
+      procesado: p.procesado,
+      enviado: p.enviado,
+      fecha,
+    };
+    pedidoObj.push(json);
+  });
+  res.render("pedidos/noprocesados", { pedidoObj });
+});
+
+router.get("/pedidos/noenviados", async (req, res) => {
+  const pedido = await pool.query(
+    `SELECT * FROM orders WHERE enviado = 0 AND procesado = 1`
+  );
+  const pedidoObj = [];
+  pedido.forEach((p) => {
+    let fecha = formatearDate(p.createdAt);
+    let json = {
+      id: p.id,
+      idcorrelativo: p.idcorrelativo,
+      companyname: req.user.companyname,
+      procesado: p.procesado,
+      enviado: p.enviado,
+      fecha,
+    };
+    pedidoObj.push(json);
+  });
+  res.render("pedidos/noenviados", { pedidoObj });
+});
+
+router.get("/pedidos/enviados", async (req, res) => {
+  const pedido = await pool.query(
+    `SELECT * FROM orders WHERE enviado = 1 AND procesado = 1`
+  );
+  const pedidoObj = [];
+  pedido.forEach((p) => {
+    let fecha = formatearDate(p.createdAt);
+    let json = {
+      id: p.id,
+      idcorrelativo: p.idcorrelativo,
+      companyname: req.user.companyname,
+      procesado: p.procesado,
+      enviado: p.enviado,
+      fecha,
+    };
+    pedidoObj.push(json);
+  });
+  res.render("pedidos/enviados", { pedidoObj });
+});
 router.post("/orders/add", async (req, res) => {
   const { pedido } = req.body;
   await pool.query(
