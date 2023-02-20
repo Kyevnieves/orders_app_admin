@@ -28,6 +28,7 @@ router.get("/pedidos", async (req, res) => {
     };
     pedidoObj.push(json);
   });
+  console.log(req.user);
   res.render("pedidos/todos", { pedidoObj });
 });
 
@@ -100,6 +101,7 @@ router.get("/pedidos/enviados", async (req, res) => {
   });
   res.render("pedidos/enviados", { pedidoObj });
 });
+
 router.post("/orders/add", async (req, res) => {
   const { pedido } = req.body;
   await pool.query(
@@ -109,6 +111,7 @@ router.post("/orders/add", async (req, res) => {
   const newOrder = {
     companyid: req.user.id,
     idcorrelativo: req.user.idorder,
+    companyname: req.user.companyname,
     pedido,
     procesado: 0,
     enviado: 0,

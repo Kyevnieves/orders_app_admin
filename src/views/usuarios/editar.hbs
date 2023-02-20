@@ -1,0 +1,41 @@
+{{#each usuario}}
+<div class="main" id="main">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Editar usuario</h5>
+    
+            <!-- No Labels Form -->
+            <form class="row g-3" action="/editar/usuario/{{id}}" method="post">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" value="{{username}}" placeholder="Codigo" required name="username">
+                </div>
+                <div class="col-md-12">
+                    <input type="text" class="form-control" value="{{companyname}}" placeholder="Nombre de empresa" required name="companyname">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" value="{{companyrif}}" placeholder="RIF" required name="companyrif">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" value="{{companyphone}}" placeholder="Telefono" required name="companyphone">
+                </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" value="{{companyaddress}}" placeholder="Dirección" required name="companyaddress">
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" value="{{companyemail}}" placeholder="Correo electronico" required name="companyemail">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" value="{{companylogo}}" placeholder="Inserte enlace de imagen" required name="companylogo">
+                </div>
+                <div class="text-center">
+                    <a href="/usuarios" class="btn btn-secondary">Volver</a>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="reset" class="btn btn-danger">Borrar campos</button>
+                </div>
+            </form><!-- End No Labels Form -->
+    
+        </div>
+    </div>
+</div>
+{{else}}
+{{/each}}

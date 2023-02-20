@@ -41,17 +41,19 @@
                                             <td><span class="date">{{fecha}}</span></td>
                                             <td><span class="date">{{companyname}}</span></td>
                                             {{#if procesado includeZero=false}}
-                                            <td><span class="badge bg-success">Correcto</span></td>
+                                            <td><span class="badge bg-success status-procesado">Correcto</span></td>
                                             {{else}}
-                                            <td><span class="badge bg-secondary">En espera</span></td>
+                                            <td><span class="badge bg-secondary status-procesado">En espera</span></td>
                                             {{/if}}
                                             {{#if enviado includeZero=false}}
                                             <td><span class="badge bg-success">Correcto</span></td>
                                             {{else}}
                                             <td><span class="badge bg-secondary">En espera</span></td>
                                             {{/if}}
-                                            <td><a href="/pedido/{{id}}" class="btn btn-primary"><i
-                                                        class="bi bi-search"></i></a></td>
+                                            <td>
+                                                <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                                                <a href="" class="btn btn-success btn-process" data-id="{{id}}"><i class="bi bi-download" data-id="{{id}}"></i></a>
+                                            </td>
                                         </tr>
                                         {{else}}
                                         <th scope="row">No hay datos</th>

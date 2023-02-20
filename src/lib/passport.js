@@ -66,7 +66,8 @@ passport.use(
       // Saving in the Database
       const result = await pool.query("INSERT INTO users SET ? ", newUser);
       newUser.id = result.insertId;
-      return done(null, newUser);
+      // return done(null, newUser);
+      done(null);
     }
   )
 );

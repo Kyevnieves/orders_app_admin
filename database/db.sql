@@ -87,6 +87,11 @@ ALTER TABLE `orders` CHANGE `pedido` `pedido` VARCHAR(3001) CHARACTER SET utf8mb
 
 
 
+---- AGREGANDO COMPANYNAME A TABLA ORDERS
+ALTER TABLE `orders` ADD `companyname` VARCHAR(300) NULL AFTER `idcorrelativo`;
+
+
+
 ---- CAMBIAR ESTADO DE ORDEN A ENVIADO EN BASE A LOS IDS EN IN
 UPDATE `orders`
    SET `enviado` = NOT `enviado`

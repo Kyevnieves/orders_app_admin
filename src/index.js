@@ -66,6 +66,7 @@ app.use(require("./routes"));
 app.use(require("./routes/authentication"));
 app.use(require("./routes/pedidos"));
 app.use(require("./routes/api_pedidos"));
+app.use(require("./routes/api_usuarios"));
 app.use(require("./routes/products"));
 app.use(require("./routes/usuarios"));
 // PUBLIC

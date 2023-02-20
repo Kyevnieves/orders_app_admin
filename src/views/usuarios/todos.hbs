@@ -29,7 +29,7 @@
                                             <th scope="col" data-sortable="" style="width: 9.68421%;"><a href="#"
                                                     class="datatable-sorter">Email</a></th>
                                             <th scope="col" data-sortable="" style="width: 19.7895%;"><a href="#"
-                                                    class="datatable-sorter">Otras opciones</a></th>
+                                                    class="datatable-sorter">Acciones</a></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,8 +39,13 @@
                                             <td><span>{{empresa}}</span></td>
                                             <td><span>{{telefono}}</span></td>
                                             <td><span>{{email}}</span></td>
-                                            <td><a href="/pedido/{{id}}" class="btn btn-primary">
-                                            <i class="bi bi-search"></i></a></td>
+                                            <td>
+                                                <div style="display:flex;gap:5px;">
+                                                    <a href="/usuario/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                                                    <a href="/editar/usuario/{{id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="/eliminar/usuario/{{id}}" class="btn btn-danger"><i class="bi bi-dash"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         {{else}}
                                         {{/each}}

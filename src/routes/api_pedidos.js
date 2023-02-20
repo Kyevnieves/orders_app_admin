@@ -10,4 +10,12 @@ router.post("/procesar/pedido/:id", async (req, res) => {
   console.log(response);
 });
 
+router.post("/enviado/pedido/:id", async (req, res) => {
+  let { id } = req.params;
+  const response = await pool.query(
+    `UPDATE orders SET enviado = 1 WHERE id = ${id}`
+  );
+  console.log(response);
+});
+
 module.exports = router;
