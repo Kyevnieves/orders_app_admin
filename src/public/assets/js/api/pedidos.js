@@ -1,9 +1,10 @@
 const btnProcesarPedidos = document.querySelectorAll(".btn-process");
 
 const procesarPedido = async (id) => {
+  const thisUrl = window.location.origin
   try {
     const response = await axios.post(
-      `http://localhost:4000/procesar/pedido/${id}`
+      `${thisUrl}/procesar/pedido/${id}`
     );
     console.log(response.data);
   } catch (error) {
