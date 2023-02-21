@@ -24,11 +24,11 @@ router.get("/pedidos", async (req, res) => {
       companyname: p.companyname,
       procesado: p.procesado,
       enviado: p.enviado,
+      pedido: p.pedido,
       fecha,
     };
     pedidoObj.push(json);
   });
-  console.log(req.user);
   res.render("pedidos/todos", { pedidoObj });
 });
 
@@ -38,9 +38,7 @@ router.get("/pedido/:id", async (req, res) => {
   let strgPedido = pedido[0].pedido;
   let arrayPedido = JSON.parse(strgPedido);
   let jsonPedido = arrayPedido[0].pedido;
-  let date = arrayPedido[0].companyInfo;
-  let fecha = formatearDate(date.fecha);
-  let jsonFecha = [fecha];
+  let jsonFecha = [formatearDate(jsonPedido[0].fecha)];
   res.render("pedidos/pedido", { jsonPedido, jsonFecha });
 });
 

@@ -15,14 +15,19 @@ btnProcesarPedidos.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target.tagName == "I") {
-      const pedido = e.target.parentElement.parentElement.parentElement;
+      const pedido =
+        e.target.parentElement.parentElement.parentElement.parentElement;
+      let strgPedido = e.target.parentElement.parentElement.dataset.pedido;
+      let jsonPedido = JSON.parse(strgPedido);
       let status = pedido.querySelector(".status-procesado");
       if ((status.textContent = "En espera")) {
         status.innerText = "Correcto";
         status.classList.add("bg-success");
       }
     } else if (e.target.tagName == "A") {
-      const pedido = e.target.parentElement.parentElement;
+      const pedido = e.target.parentElement.parentElement.parentElement;
+      let strgPedido = e.target.parentElement.dataset.pedido;
+      let jsonPedido = JSON.parse(strgPedido);
       let status = pedido.querySelector(".status-procesado");
       if ((status.textContent = "En espera")) {
         status.innerText = "Correcto";
@@ -48,14 +53,15 @@ btnEnviarPedidos.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target.tagName == "I") {
-      const pedido = e.target.parentElement.parentElement.parentElement;
+      const pedido =
+        e.target.parentElement.parentElement.parentElement.parentElement;
       let status = pedido.querySelector(".status-enviado");
       if ((status.textContent = "En espera")) {
         status.innerText = "Correcto";
         status.classList.add("bg-success");
       }
     } else if (e.target.tagName == "A") {
-      const pedido = e.target.parentElement.parentElement;
+      const pedido = e.target.parentElement.parentElement.parentElement;
       let status = pedido.querySelector(".status-enviado");
       if ((status.textContent = "En espera")) {
         status.innerText = "Correcto";

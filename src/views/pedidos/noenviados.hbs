@@ -51,8 +51,10 @@
                                             <td><span class="badge bg-secondary status-enviado">En espera</span></td>
                                             {{/if}}
                                             <td>
+                                                <div style="display:flex;gap:5px;">
                                                 <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
                                                 <a href="" class="btn btn-success btn-enviado" data-id="{{id}}"><i class="bx bx-send" data-id="{{id}}"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                         {{else}}
