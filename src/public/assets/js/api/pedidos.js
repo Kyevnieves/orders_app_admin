@@ -1,11 +1,25 @@
 const btnProcesarPedidos = document.querySelectorAll(".btn-process");
 const btnEnviarPedidos = document.querySelectorAll(".btn-enviado");
 
+function startDownloadCsv(input) {
+  const blob = new Blob([input], { type: "application/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.download = "test-csv.csv";
+  a.href = url;
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
 const procesarPedido = async (id) => {
   const thisUrl = window.location.origin;
   try {
     const response = await axios.post(`${thisUrl}/procesar/pedido/${id}`);
-    console.log(response.data);
+    const resultadoCsv = response.data;
+    startDownloadCsv(resultadoCsv);
   } catch (error) {
     console.log(error);
   }
