@@ -6,7 +6,7 @@ const hostCDN = `https://cdn.kyev.online`;
 inputFile.addEventListener("change", () => {
   const formData = new FormData(form);
   axios
-    .post("http://localhost:3000/guardar/imagen", formData, {
+    .post(`${hostCDN}/guardar/imagen`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "Access-Control-Allow-Origin": "*",
