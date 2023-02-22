@@ -16,9 +16,9 @@ router.get("/editar/producto/:id", async (req, res) => {
   const product = await pool.query(`SELECT * FROM products WHERE id = ${id}`);
   res.render("productos/editar", { product });
 });
-router.post("/crear/producto", upload, async (req, res) => {
-  const { productname, productcod, productprice } = req.body;
-  const productimg = req.file.path;
+
+router.post("/crear/producto", async (req, res) => {
+  const { productname, productcod, productprice, productimg } = req.body;
   const newProduct = {
     productname,
     productcod,

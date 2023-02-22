@@ -4,23 +4,29 @@
             <h5 class="card-title">Crear producto</h5>
     
             <!-- No Labels Form -->
-            <form class="row g-3" action="/crear/producto" method="post" enctype="multipart/form-data">
-                <div class="col-md-8">
+            <form class="row g-3 form-agregar-producto" action="/crear/producto" method="post">
+                
+                <div class="col-md-6">
+                    <label>Codigo</label>
                     <input type="text" class="form-control" placeholder="Codigo producto" required name="productcod">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
+                    <label>Nombre</label>
                     <input type="text" class="form-control" placeholder="Producto" required name="productname">
                 </div>
-                <div class="col-md-8">
+
+                <div class="col-md-6">
+                    <label>Precio</label>
                     <input type="number" class="form-control productprice" placeholder="Precio" required name="productprice">
                 </div>
-                <div class="col-md-8">
-                    <label for="productimg">Imagen del producto</label>
-                    <input type="file" class="form-control" placeholder="Telefono" required name="productimg">
+                <div class="col-md-6">
+                    <label>Imagen</label>
+                    <input type="file" class="form-control inputFile" placeholder="Telefono" required name="image">
                 </div>
+                    <input type="text" class="display-none product-img-url" name="productimg">
                 <div class="text-center">
                     <a href="/productos" class="btn btn-secondary">Volver</a>
-                    <button type="submit" class="btn btn-primary">Crear producto</button>
+                    <button type="submit" class="btn btn-primary btn-submit-product" disabled>Crear producto</button>
                     <button type="reset" class="btn btn-danger">Borrar campos</button>
                 </div>
             </form><!-- End No Labels Form -->
