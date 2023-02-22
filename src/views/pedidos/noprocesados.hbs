@@ -1,6 +1,6 @@
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Procesar pedidos</h1>
+        <h1>Pedidos no procesados</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -37,7 +37,7 @@
                                     <tbody>
                                         {{#each pedidoObj}}
                                         <tr>
-                                            <th scope="row">{{id}}</th>
+                                            <th scope="row">{{idcorrelativo}}</th>
                                             <td><span class="date">{{fecha}}</span></td>
                                             <td><span class="date">{{companyname}}</span></td>
                                             {{#if procesado includeZero=false}}
@@ -51,7 +51,7 @@
                                             <td><span class="badge bg-secondary">En espera</span></td>
                                             {{/if}}
                                             <td>
-                                                <div style="display:flex;gap:5px;">
+                                                <div style="display:flex;gap:5px;" data-pedido="{{pedido}}">
                                                 <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
                                                 <a href="" class="btn btn-success btn-process" data-id="{{id}}"><i class="bi bi-download" data-id="{{id}}"></i></a>
                                                 </div>

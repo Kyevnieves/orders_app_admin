@@ -1,0 +1,30 @@
+<div class="main" id="main">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Crear producto</h5>
+    
+            <!-- No Labels Form -->
+            <form class="row g-3" action="/crear/producto" method="post" enctype="multipart/form-data">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Codigo producto" required name="productcod">
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Producto" required name="productname">
+                </div>
+                <div class="col-md-8">
+                    <input type="number" class="form-control productprice" placeholder="Precio" required name="productprice">
+                </div>
+                <div class="col-md-8">
+                    <label for="productimg">Imagen del producto</label>
+                    <input type="file" class="form-control" placeholder="Telefono" required name="productimg">
+                </div>
+                <div class="text-center">
+                    <a href="/productos" class="btn btn-secondary">Volver</a>
+                    <button type="submit" class="btn btn-primary">Crear producto</button>
+                    <button type="reset" class="btn btn-danger">Borrar campos</button>
+                </div>
+            </form><!-- End No Labels Form -->
+    
+        </div>
+    </div>
+</div>

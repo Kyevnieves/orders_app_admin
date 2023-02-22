@@ -50,9 +50,10 @@ router.get("/pedidos/noprocesados", async (req, res) => {
     let json = {
       id: p.id,
       idcorrelativo: p.idcorrelativo,
-      companyname: req.user.companyname,
+      companyname: p.companyname,
       procesado: p.procesado,
       enviado: p.enviado,
+      pedido: p.pedido,
       fecha,
     };
     pedidoObj.push(json);

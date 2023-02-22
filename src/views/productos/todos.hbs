@@ -1,0 +1,60 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Todos los productos</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item">Productos</li>
+                <li class="breadcrumb-item active">Todos</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Todos los productos</h5>
+                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                            <div class="dataTable-container">
+                                <table class="table datatable dataTable-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Codigo</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Nombre</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Precio</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Imagen</a></th>
+                                            <th scope="col" data-sortable=""><a href="#"
+                                                    class="datatable-sorter">Acciones</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each products}}
+                                        <tr>
+                                            <th scope="row">{{productcod}}</th>
+                                            <td><span>{{productname}}</span></td>
+                                            <td><span>{{productprice}}</span></td>
+                                            <td><img src="{{productimg}}" alt="" class="product-img"></td>
+                                            <td>
+                                                <div style="display:flex;gap:5px;">
+                                                    <a href="/editar/producto/{{id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="/eliminar/producto/{{id}}" class="btn btn-danger"><i class="bi bi-dash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{else}}
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -52,6 +52,13 @@ ALTER TABLE products
 USE database_orders;
 DESCRIBE products;
 
+USE database_orders;
+
+
+
+
+
+
 ---- CREAR CORRELATIVO DE PEDIDOS PARA USUARIOS
 USE database_orders;
 ALTER TABLE `users` ADD `idorder` INT NOT NULL AFTER `companylogo`;
