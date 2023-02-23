@@ -30,6 +30,9 @@ ALTER TABLE `users` ADD `superuser` BOOLEAN NOT NULL AFTER `idorder`;
 UPDATE `users` SET `superuser` = '1' WHERE `users`.`id` = 1;
 
 
+---- CREANDO COLUMNA PARA RELACIONAR PRODUCTOS CON LOS USUARIOS
+ALTER TABLE `users` ADD `products` VARCHAR(300) NOT NULL AFTER `superuser`;
+
 
 ---- CREAR TABLA PRODUCTOS
 USE database_orders;

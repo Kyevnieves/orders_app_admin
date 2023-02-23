@@ -72,3 +72,27 @@ const listarProductos = () => {
   const string = JSON.stringify(orderInfo);
   inputPedido.value = string;
 };
+
+/// SCRIPTS PRODUCTOS CREAR PRODUCTO
+const products = document.querySelectorAll(".product");
+const inputProducts = document.querySelector(".inputProducts");
+let resultado = [];
+if (products !== undefined) {
+  products.forEach((p) => {
+    p.addEventListener("click", (e) => {
+      if (e.target.tagName == "IMG") {
+        e.target.parentElement.classList.toggle("selected");
+        let seleccionados = document.querySelectorAll(".selected");
+        setTimeout(() => {
+          resultado = "";
+          seleccionados.forEach((card) => {
+            resultado += `${card.dataset.id},`;
+          });
+          let result = resultado.substr(0, resultado.length - 1);
+          let inputValue = `(${result})`;
+          inputProducts.value = inputValue;
+        }, 500);
+      }
+    });
+  });
+}

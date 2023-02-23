@@ -2,6 +2,7 @@ const form = document.querySelector(".form-producto");
 const inputFile = document.querySelector(".inputFile");
 const productImgURL = document.querySelector(".product-img-url");
 const btnSubmitProduct = document.querySelector(".btn-submit-product");
+const imgProductImg = document.querySelector(".img-product-img");
 const hostCDN = `https://cdn.kyev.online`;
 // FUNCION PARA CARGAR IMAGENES DE PRODUCTOS AL CDN
 if (inputFile !== null) {
@@ -23,6 +24,7 @@ if (inputFile !== null) {
       .then((res) => {
         const fileName = res.data;
         productImgURL.value = `${hostCDN}/images/products/${fileName}`;
+        imgProductImg.src = `${hostCDN}/images/products/${fileName}`;
         btnSubmitProduct.disabled = false;
       })
       .catch((err) => {

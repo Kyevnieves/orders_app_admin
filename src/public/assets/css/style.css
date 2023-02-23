@@ -1368,3 +1368,47 @@ select{
 .product-img{
   width: 50px;
 }
+.display-flex{
+  display: flex;
+}
+.container-product{
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.img-product-img{
+ width: 250px;
+ margin-right: 1rem;
+}
+.container-btn{
+  justify-content: center;
+  gap: 20px;
+}
+.container-product-cu{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.product{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid #2323232f;
+  overflow: hidden;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.product h5{
+  font-size: 1rem;
+}
+.product h6{
+  font-size: .8rem;
+}
+.selected{
+  background: #dddddd;
+}

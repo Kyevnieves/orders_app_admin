@@ -50,6 +50,7 @@ passport.use(
         companyphone,
         companyemail,
         companylogo,
+        products,
       } = req.body;
       let newUser = {
         username,
@@ -60,6 +61,7 @@ passport.use(
         companyphone,
         companyemail,
         companylogo,
+        products,
         idorder: 1,
       };
       newUser.password = await helpers.encryptPassword(password);
