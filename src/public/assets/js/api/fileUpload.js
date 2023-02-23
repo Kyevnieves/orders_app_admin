@@ -47,7 +47,7 @@ if (inputFileUser !== null) {
   inputFileUser.addEventListener("change", () => {
     const formData = new FormData(formUser);
     axios
-      .post(`${hostCDN}/guardar/imagen`, formData, {
+      .post(`${hostCDN}/guardar/imagen/usuario`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Access-Control-Allow-Origin": "*",
