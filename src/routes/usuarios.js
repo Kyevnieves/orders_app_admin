@@ -7,7 +7,9 @@ router.get("/registrar/usuario", async (req, res) => {
 });
 
 router.get("/usuarios", async (req, res) => {
-  const usuarios = await pool.query("SELECT * FROM users WHERE superuser = 0");
+  const usuarios = await pool.query(
+    "SELECT * FROM users WHERE superuser = 0 OR superuser = null"
+  );
   const userObj = [];
   usuarios.forEach((u) => {
     let json = {

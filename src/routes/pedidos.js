@@ -71,7 +71,7 @@ router.get("/pedidos/noenviados", async (req, res) => {
     let json = {
       id: p.id,
       idcorrelativo: p.idcorrelativo,
-      companyname: req.user.companyname,
+      companyname: p.companyname,
       procesado: p.procesado,
       enviado: p.enviado,
       fecha,

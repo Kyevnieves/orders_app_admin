@@ -5,7 +5,7 @@
             <h5 class="card-title">Editar producto</h5>
     
             <!-- No Labels Form -->
-            <form class="row g-3" action="/editar/producto/{{id}}" method="post">
+            <form class="row g-3 form-producto" action="/editar/producto/{{id}}" method="post">
                 
                 <div class="col-md-6">
                     <input type="text" class="form-control" placeholder="Codigo producto" required name="productcod" value="{{productcod}}">
@@ -18,14 +18,14 @@
                 </div>
                 <div class="col-md-6">
                     <label for="productimg">Imagen del producto</label>
-                    <input type="file" class="form-control" placeholder="Telefono" required value="">
+                    <input type="file" class="form-control inputFile" value="" name="image">
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="display-none product-img-url" name="productimg">
+                    <input type="text" class="display-none product-img-url" name="productimg" value="{{productimg}}">
                 </div>
                 <div class="text-center">
                     <a href="/productos" class="btn btn-secondary">Volver</a>
-                    <button type="submit" class="btn btn-primary btn-submit-product" disabled>Editar</button>
+                    <button type="submit" class="btn btn-primary btn-submit-product">Editar</button>
                     <button type="reset" class="btn btn-danger">Borrar campos</button>
                 </div>
             </form><!-- End No Labels Form -->

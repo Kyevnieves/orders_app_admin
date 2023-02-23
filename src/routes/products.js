@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../database");
-const { upload } = require("../lib/multer");
+
 router.get("/crear/producto", (req, res) => {
   res.render("productos/crear");
 });
@@ -26,7 +26,31 @@ router.post("/crear/producto", async (req, res) => {
     productimg,
   };
   const response = await pool.query("INSERT INTO products set ?", [newProduct]);
-  res.send(response);
+  req.flash("success", "Producto creado");
+  res.redirect(`/productos`);
 });
 
+router.post("/editar/producto/:id", async (req, res) => {
+  let { id } = req.params;
+  let { productname, productcod, productprice, productimg } = req.body;
+  const newProductInfo = {
+    productname,
+    productcod,
+    productprice,
+    productimg,
+  };
+  const response = await pool.query(`UPDATE products set ? WHERE id = ?`, [
+    newProductInfo,
+    id,
+  ]);
+  req.flash("success", "Producto actualizado");
+  res.redirect(`/productos`);
+});
+
+router.get("/eliminar/producto/:id", async (req, res) => {
+  let { id } = req.params;
+  const response = await pool.query(`DELETE FROM products WHERE id = ${id}`);
+  req.flash("success", "Producto eliminado");
+  res.redirect("/productos");
+});
 module.exports = router;
