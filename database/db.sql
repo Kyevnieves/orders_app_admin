@@ -111,3 +111,8 @@ UPDATE `orders`
 UPDATE `orders`
    SET `procesado` = NOT `procesado`
  WHERE `id` IN(7,8,9)
+
+
+----- FILTRAR POR RANGO DE FECHAS
+----- EJEMPLO MES FEBRERO
+SELECT * FROM orders WHERE createdAt BETWEEN '2023-02-01' AND '2023-02-22';

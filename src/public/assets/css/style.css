@@ -1412,3 +1412,59 @@ select{
 .selected{
   background: #dddddd;
 }
+.card-pedidos{
+  display: flex;
+  min-width: 12rem;
+  min-height: 8rem;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+.card-pedidos:nth-child(1){
+  background-color: rgba(236, 159, 17, 0.85);
+  border: 1px solid rgba(255, 166, 0, 1);
+  filter: drop-shadow(7px 5px 5px #23232332);
+}
+.card-pedidos:nth-child(2) {
+  background-color: rgba(130, 25, 206, 0.85);
+  border: 1px solid rgba(149, 0, 255, 1);
+  filter: drop-shadow(7px 5px 5px #23232332);
+}
+.card-pedidos:nth-child(3) {
+  background-color: rgba(25, 214, 123, 0.85);
+  border: 1px solid rgba(0, 255, 132, 1);
+  filter: drop-shadow(7px 5px 5px #23232332);
+}
+.card-pedidos:nth-child(4) {
+  background-color: rgba(24, 20, 237, 0.85);
+  border: 1px solid rgba(4, 0, 255, 1);
+  filter: drop-shadow(7px 5px 5px #23232332);
+}
+.card-pedidos h3{
+  color: #fff;
+  font-weight: bold;
+}
+.card-pedidos h6{
+  color: #fff;
+  font-weight: bold;
+}
+.card-pedidos i {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
+}
+.container h3.title{
+  font-size: 24px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #012970;
+}
+.container-cards{
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card-totales{
+  width: 50%;
+}
