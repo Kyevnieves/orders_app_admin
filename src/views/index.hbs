@@ -1,7 +1,6 @@
     <main id="main" class="main">
-        <div class="container">
+        <div class="container display-flex index-container">
             <h3 class="title">Pedidos</h3>
-                <div class="row">
                 <div class="col-md-12 display-flex container-cards">
                     <div class="card-pedidos">
                         <div class="card-totales">
@@ -32,6 +31,15 @@
                     </div>
                     <div class="card-pedidos">
                         <div class="card-totales">
+                            <h6>Pedidos cancelados</h6>
+                            <h3>1</h3>
+                        </div>
+                        <div class="card-icon">
+                            <i class="bi bi-exclamation-circle"></i>
+                        </div>
+                    </div>
+                    <div class="card-pedidos">
+                        <div class="card-totales">
                             <h6>Usuarios</h6>
                             <h3>33</h3>
                         </div>
@@ -40,6 +48,50 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="display-flex col-md-12 container-chart">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Reporte anual</h5>
+                    
+                                <!-- Bar Chart -->
+                                <div id="barChart" style="min-height: 365px;">
+                                    
+                                </div>
+                    
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", () => {
+                                        new ApexCharts(document.querySelector("#barChart"), {
+                                            series: [{
+                                                data: [400, 430, 448, 470, 540, 580, 690, 690, 690, 690]
+                                            }],
+                                            chart: {
+                                                type: 'bar',
+                                                height: 350
+                                            },
+                                            plotOptions: {
+                                                bar: {
+                                                    borderRadius: 4,
+                                                    horizontal: true,
+                                                }
+                                            },
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            xaxis: {
+                                                categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+                                                    'United States', 'China', 'Germany'
+                                                ],
+                                            }
+                                        }).render();
+                                    });
+                                </script>
+                                <!-- End Bar Chart -->
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </main><!-- End #main -->
