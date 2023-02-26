@@ -4,12 +4,11 @@ const pool = require("../database");
 
 const formatearDate = (date) => {
   let dateFormat = new Date(date);
-  let fechaFormateada =
-    dateFormat.getDate() +
-    "/" +
-    dateFormat.getMonth() +
-    "/" +
-    dateFormat.getFullYear();
+  let dia = dateFormat.getDate();
+  let mes = dateFormat.getMonth() + 1;
+  let año = dateFormat.getFullYear();
+  console.log(dia, mes, año);
+  let fechaFormateada = `${dia}/${mes}/${año}`;
   return fechaFormateada;
 };
 
