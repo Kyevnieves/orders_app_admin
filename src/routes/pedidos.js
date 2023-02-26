@@ -14,7 +14,10 @@ const formatearDate = (date) => {
 };
 
 router.get("/pedidos", async (req, res) => {
-  const pedido = await pool.query(`SELECT * FROM orders`);
+  const pedido = await pool.query(
+    `SELECT * FROM orders ORDER BY createdAt DESC`
+  );
+
   const pedidoObj = [];
   pedido.forEach((p) => {
     let fecha = formatearDate(p.createdAt);
@@ -25,6 +28,7 @@ router.get("/pedidos", async (req, res) => {
       procesado: p.procesado,
       enviado: p.enviado,
       pedido: p.pedido,
+      cancelado: p.cancelado,
       fecha,
     };
     pedidoObj.push(json);
@@ -99,6 +103,27 @@ router.get("/pedidos/enviados", async (req, res) => {
     pedidoObj.push(json);
   });
   res.render("pedidos/enviados", { pedidoObj });
+});
+
+router.get("/pedidos/cancelados", async (req, res) => {
+  const pedido = await pool.query(
+    `SELECT * FROM orders WHERE cancelado = 1 AND procesado = 0 AND enviado = 0`
+  );
+  const pedidoObj = [];
+  pedido.forEach((p) => {
+    let fecha = formatearDate(p.createdAt);
+    let json = {
+      id: p.id,
+      idcorrelativo: p.idcorrelativo,
+      companyname: req.user.companyname,
+      procesado: p.procesado,
+      enviado: p.enviado,
+      fecha,
+    };
+    pedidoObj.push(json);
+  });
+
+  res.render("pedidos/cancelados", { pedidoObj });
 });
 
 router.post("/orders/add", async (req, res) => {

@@ -34,22 +34,33 @@
                                             <th scope="row">{{id}}</th>
                                             <td><span class="date">{{fecha}}</span></td>
                                             <td><span class="date">{{companyname}}</span></td>
-                                            {{#if procesado includeZero=false}}
-                                            <td><span class="badge bg-success status-procesado">Correcto</span></td>
-                                            {{else}}
-                                            <td><span class="badge bg-secondary status-procesado">En espera</span></td>
-                                            {{/if}}
-                                            {{#if enviado includeZero=false}}
-                                            <td><span class="badge bg-success status-enviado">Correcto</span></td>
-                                            {{else}}
-                                            <td><span class="badge bg-secondary status-enviado">En espera</span></td>
-                                            {{/if}}
-                                            <td>
-                                                <div style="display:flex;gap:5px;" data-pedido="{{pedido}}">
-                                                <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
-                                                <a href="" class="btn btn-success btn-process" data-id="{{id}}"><i class="bi bi-download" data-id="{{id}}"></i></a>
-                                                </div>
-                                            </td>
+                                                {{#if cancelado includeZero=false}}
+                                                <td><span class="badge bg-danger">Cancelado</span></td>
+                                                <td><span class="badge bg-danger">Cancelado</span></td>
+                                                <td>
+                                                    <div style="display:flex;gap:5px;" data-pedido="{{pedido}}">
+                                                        <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                                                    </div>
+                                                </td>
+                                                {{else}}
+                                                    {{#if procesado includeZero=false}}
+                                                    <td><span class="badge bg-success status-procesado">Correcto</span></td>
+                                                    {{else}}
+                                                    <td><span class="badge bg-secondary status-procesado">En espera</span></td>
+                                                    {{/if}}
+                                                    {{#if enviado includeZero=false}}
+                                                    <td><span class="badge bg-success status-enviado">Correcto</span></td>
+                                                    {{else}}
+                                                    <td><span class="badge bg-secondary status-enviado">En espera</span></td>
+                                                    {{/if}}
+                                                    <td>
+                                                        <div style="display:flex;gap:5px;" data-pedido="{{pedido}}">
+                                                            <a href="/pedido/{{id}}" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                                                            <a href="" class="btn btn-success btn-process" data-id="{{id}}"><i class="bi bi-download"
+                                                                    data-id="{{id}}"></i></a>
+                                                        </div>
+                                                    </td>
+                                                {{/if}}
                                         </tr>
                                         {{else}}
                                         <th scope="row">No hay datos</th>
