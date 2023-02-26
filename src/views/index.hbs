@@ -1,11 +1,12 @@
     <main id="main" class="main">
         <div class="container display-flex index-container">
             <h3 class="title">Pedidos</h3>
+                       
                 <div class="col-md-12 display-flex container-cards">
                     <div class="card-pedidos">
                         <div class="card-totales">
                             <h6>Pedidos totales</h6>
-                            <h3>25</h3>
+                            <h3>{{reporteMensual.totales}}</h3>
                         </div>
                         <div class="card-icon">
                             <i class="bi bi-journal-text"></i>
@@ -14,7 +15,7 @@
                     <div class="card-pedidos">
                         <div class="card-totales">
                             <h6>Pedidos procesados</h6>
-                            <h3>10</h3>
+                            <h3>{{reporteMensual.procesados}}</h3>
                         </div>
                         <div class="card-icon">
                             <i class="bi bi-download"></i>
@@ -23,7 +24,7 @@
                     <div class="card-pedidos">
                         <div class="card-totales">
                             <h6>Pedidos enviados</h6>
-                            <h3>15</h3>
+                            <h3>{{reporteMensual.enviados}}</h3>
                         </div>
                         <div class="card-icon">
                             <i class="bi bi-cursor"></i>
@@ -32,7 +33,7 @@
                     <div class="card-pedidos">
                         <div class="card-totales">
                             <h6>Pedidos cancelados</h6>
-                            <h3>1</h3>
+                            <h3>{{reporteMensual.cancelados}}</h3>
                         </div>
                         <div class="card-icon">
                             <i class="bi bi-exclamation-circle"></i>
@@ -41,57 +42,13 @@
                     <div class="card-pedidos">
                         <div class="card-totales">
                             <h6>Usuarios</h6>
-                            <h3>33</h3>
+                            <h3>{{reporteMensual.usuarios}}</h3>
                         </div>
                         <div class="card-icon">
                             <i class="bi bi-person"></i>
                         </div>
                     </div>
                 </div>
-
-                <div class="display-flex col-md-12 container-chart">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Reporte anual</h5>
-                    
-                                <!-- Bar Chart -->
-                                <div id="barChart" style="min-height: 365px;">
-                                    
-                                </div>
-                    
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new ApexCharts(document.querySelector("#barChart"), {
-                                            series: [{
-                                                data: [400, 430, 448, 470, 540, 580, 690, 690, 690, 690]
-                                            }],
-                                            chart: {
-                                                type: 'bar',
-                                                height: 350
-                                            },
-                                            plotOptions: {
-                                                bar: {
-                                                    borderRadius: 4,
-                                                    horizontal: true,
-                                                }
-                                            },
-                                            dataLabels: {
-                                                enabled: true
-                                            },
-                                            xaxis: {
-                                                categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                                                    'United States', 'China', 'Germany'
-                                                ],
-                                            }
-                                        }).render();
-                                    });
-                                </script>
-                                <!-- End Bar Chart -->
-                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{>reportes}}
         </div>
     </main><!-- End #main -->

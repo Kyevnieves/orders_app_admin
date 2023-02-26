@@ -3,7 +3,9 @@ const router = express.Router();
 const pool = require("../database");
 
 router.get("/registrar/usuario", async (req, res) => {
-  res.render("usuarios/registrar");
+  const products = await pool.query(`SELECT * FROM products`);
+
+  res.render("usuarios/registrar", { products });
 });
 
 router.get("/usuarios", async (req, res) => {
@@ -33,7 +35,6 @@ router.get("/usuario/:id", async (req, res) => {
 router.get("/eliminar/usuario/:id", async (req, res) => {
   let { id } = req.params;
   const response = await pool.query(`DELETE FROM users WHERE id = ${id}`);
-  console.log(response);
   req.flash("success", "Usuario eliminado");
   res.redirect("/usuarios");
 });
@@ -67,7 +68,6 @@ router.post("/editar/usuario/:id", async (req, res) => {
     companyemail,
     companylogo,
   };
-  console.log(req.body);
   await pool.query("UPDATE users set ? WHERE id = ?", [newUser, id]);
   req.flash("success", "Usuario actualizado");
   res.redirect(`/usuarios`);

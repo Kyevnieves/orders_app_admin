@@ -1,0 +1,91 @@
+<div class="display-flex col-md-12 container-chart">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Reporte mes actual</h5>
+
+                <!-- Polar Area Chart -->
+                <canvas id="polarAreaChart"></canvas>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        new Chart(document.querySelector('#polarAreaChart'), {
+                            type: 'polarArea',
+                            data: {
+                                labels: [
+                                    'Procesados',
+                                    'Enviados',
+                                    'Cancelados',
+                                    'Totales',
+                                ],
+                                datasets: [{
+                                    label: 'Cantidad',
+                                    data: [{{ reporteMensual.procesados }}, {{ reporteMensual.enviados }}, {{ reporteMensual.cancelados }}, {{ reporteMensual.totales }}],
+                                    backgroundColor: [
+                                        'rgb(54, 162, 235)',
+                                        'rgb(75, 192, 192)',
+                                        'rgb(255, 99, 132)',
+                                        'rgb(255, 205, 86)',
+
+                                    ]
+                                }]
+                            }
+                        });
+                    });
+                </script>
+                <!-- End Polar Area Chart -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body" >
+                <h5 class="card-title">Reporte anual</h5>
+
+                <!-- Bar Chart -->
+                <div id="barChart" style="min-height: 365px;" data-orders="{{reporteAnual}}">
+
+                </div>
+
+                <script>
+                    let data = document.getElementById('barChart').dataset.orders
+                    let objFechas = ["Enero", 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiempre', 'Octubre', 'Noviembre', 'Diciembre']
+                    const dataJson = JSON.parse(data)
+                    let dataBar = [];
+                    dataJson.forEach(e=>{
+                        dataBar.push(e.cantidad)
+                    })
+                    let cantidadMeses = dataBar.length
+                    let dataMeses = objFechas.slice(0, cantidadMeses)
+                    document.addEventListener("DOMContentLoaded", () => {
+                        new ApexCharts(document.querySelector("#barChart"), {
+                            series: [{
+                                data: dataBar
+                            }],
+                            chart: {
+                                type: 'bar',
+                                height: 350
+                            },
+                            plotOptions: {
+                                bar: {
+                                    borderRadius: 4,
+                                    horizontal: true,
+                                }
+                            },
+                            dataLabels: {
+                                enabled: true
+                            },
+                            xaxis: {
+                                categories: dataMeses,
+                            }
+                        }).render();
+                    });
+                </script>
+                <!-- End Bar Chart -->
+
+            </div>
+        </div>
+    </div>
+
+</div>

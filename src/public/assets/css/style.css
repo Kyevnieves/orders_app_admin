@@ -237,12 +237,13 @@ h6 {
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
   overflow: scroll;
+  background-color: transparent;
 }
 
 .card-header,
 .card-footer {
   border-color: #ebeef4;
-  background-color: #fff;
+  background-color: transparent;
   color: #798eb3;
   padding: 15px;
 }
@@ -361,7 +362,7 @@ h6 {
 }
 
 .nav-tabs-bordered .nav-link.active {
-  background-color: #fff;
+  background-color: transparent;
   color: #4154f1;
   border-bottom: 2px solid #4154f1;
 }
@@ -1330,11 +1331,18 @@ input[type=number].cantidad
 }
 .dataTable-selector{
   padding: 6px;
+  background-color: transparent !important;
+}
+.datatable-input{
+  background-color: transparent;
+  padding: .5em;
+  border: 1px solid #2323233e;
 }
 select{
   word-wrap: normal;
   text-transform: none;
   padding: 6px 10px;
+  background-color: transparent;
 }
 .datatable-pagination-list a{
   border: 1px solid transparent;
@@ -1427,36 +1435,42 @@ select{
 @media (max-width: 968px) {
   .card-pedidos {
       display: flex;
-      width: 9rem;
+      width: 47%;
       min-height: 7rem;
       border-radius: 20px;
       align-items: center;
       justify-content: space-around;
     }
+    .card-pedidos:nth-child(5) {
+      background-color: rgba(24, 20, 237, 0.85);
+      border: 1px solid rgba(4, 0, 255, 1);
+      filter: drop-shadow(7px 5px 5px #23232332);
+      width: 100%;
+    }
 }
 .card-pedidos:nth-child(1){
-  background-color: rgba(236, 159, 17, 0.85);
-  border: 1px solid rgba(255, 166, 0, 1);
+  background-color: rgb(255, 195, 54);
+  border: 1px solid rgb(255, 205, 86);
   filter: drop-shadow(7px 5px 5px #23232332);
 }
 .card-pedidos:nth-child(2) {
-  background-color: rgba(130, 25, 206, 0.85);
-  border: 1px solid rgba(149, 0, 255, 1);
+  background-color: rgba(42, 170, 255, 0.95);
+  border: 1px solid rgb(54, 162, 235);
   filter: drop-shadow(7px 5px 5px #23232332);
 }
 .card-pedidos:nth-child(3) {
-  background-color: rgba(25, 214, 123, 0.85);
-  border: 1px solid rgba(0, 255, 132, 1);
+  background-color: rgba(78, 215, 215, 0.95);
+  border: 1px solid rgb(75, 192, 192);
   filter: drop-shadow(7px 5px 5px #23232332);
 }
 .card-pedidos:nth-child(4) {
-  background-color: rgba(237, 20, 20, 0.85);
-  border: 1px solid rgb(255, 0, 0);
+  background-color: rgb(255, 62, 104);
+  border: 1px solid rgb(255, 99, 132);
   filter: drop-shadow(7px 5px 5px #23232332);
 }
 .card-pedidos:nth-child(5) {
-  background-color: rgba(24, 20, 237, 0.85);
-  border: 1px solid rgba(4, 0, 255, 1);
+  background-color: rgba(46, 42, 255, 0.85);
+  border: 1px solid rgb(58, 55, 255);
   filter: drop-shadow(7px 5px 5px #23232332);
 }
 .card-pedidos h3{
@@ -1488,4 +1502,268 @@ select{
 }
 .container-chart{
   margin: 3rem 0rem;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.container-loader{
+background-color: #ffffff;
+width: 100vw;
+height: 100vh;
+position: fixed;
+top: 0;
+z-index: 99999999999999999;
+}
+.loadingspinner {
+  --square: 26px;
+  --offset: 30px;
+  --duration: 2.4s;
+  --delay: 0.2s;
+  --timing-function: ease-in-out;
+  --in-duration: 0.4s;
+  --in-delay: 0.1s;
+  --in-timing-function: ease-out;
+  width: calc(3 * var(--offset) + var(--square));
+  height: calc(2 * var(--offset) + var(--square));
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  margin-bottom: 30px;
+  position: relative;
+}
+@media (max-width: 968px) {
+  .loadingspinner {
+    margin-top: 75%;
+  }
+
+}
+.loadingspinner div {
+  display: inline-block;
+  background: #4154f1;
+  /*background: var(--text-color);*/
+  /*box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);*/
+  border: none;
+  border-radius: 2px;
+  width: var(--square);
+  height: var(--square);
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+  font-size: 6pt;
+  color: black;
+}
+
+.loadingspinner #square1 {
+  left: calc(0 * var(--offset));
+  top: calc(0 * var(--offset));
+  animation: square1 var(--duration) var(--delay) var(--timing-function) infinite,
+    squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
+}
+
+.loadingspinner #square2 {
+  left: calc(0 * var(--offset));
+  top: calc(1 * var(--offset));
+  animation: square2 var(--duration) var(--delay) var(--timing-function) infinite,
+    squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
+}
+
+.loadingspinner #square3 {
+  left: calc(1 * var(--offset));
+  top: calc(1 * var(--offset));
+  animation: square3 var(--duration) var(--delay) var(--timing-function) infinite,
+    squarefadein var(--in-duration) calc(2 * var(--in-delay)) var(--in-timing-function) both;
+}
+
+.loadingspinner #square4 {
+  left: calc(2 * var(--offset));
+  top: calc(1 * var(--offset));
+  animation: square4 var(--duration) var(--delay) var(--timing-function) infinite,
+    squarefadein var(--in-duration) calc(3 * var(--in-delay)) var(--in-timing-function) both;
+}
+
+.loadingspinner #square5 {
+  left: calc(3 * var(--offset));
+  top: calc(1 * var(--offset));
+  animation: square5 var(--duration) var(--delay) var(--timing-function) infinite,
+    squarefadein var(--in-duration) calc(4 * var(--in-delay)) var(--in-timing-function) both;
+}
+
+@keyframes square1 {
+  0% {
+    left: calc(0 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+
+  8.333% {
+    left: calc(0 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  100% {
+    left: calc(0 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+}
+
+@keyframes square2 {
+  0% {
+    left: calc(0 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  8.333% {
+    left: calc(0 * var(--offset));
+    top: calc(2 * var(--offset));
+  }
+
+  16.67% {
+    left: calc(1 * var(--offset));
+    top: calc(2 * var(--offset));
+  }
+
+  25.00% {
+    left: calc(1 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  83.33% {
+    left: calc(1 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  91.67% {
+    left: calc(1 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+
+  100% {
+    left: calc(0 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+}
+
+@keyframes square3 {
+
+  0%,
+  100% {
+    left: calc(1 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  16.67% {
+    left: calc(1 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  25.00% {
+    left: calc(1 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+
+  33.33% {
+    left: calc(2 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+
+  41.67% {
+    left: calc(2 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  66.67% {
+    left: calc(2 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  75.00% {
+    left: calc(2 * var(--offset));
+    top: calc(2 * var(--offset));
+  }
+
+  83.33% {
+    left: calc(1 * var(--offset));
+    top: calc(2 * var(--offset));
+  }
+
+  91.67% {
+    left: calc(1 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+}
+
+@keyframes square4 {
+  0% {
+    left: calc(2 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  33.33% {
+    left: calc(2 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  41.67% {
+    left: calc(2 * var(--offset));
+    top: calc(2 * var(--offset));
+  }
+
+  50.00% {
+    left: calc(3 * var(--offset));
+    top: calc(2 * var(--offset));
+  }
+
+  58.33% {
+    left: calc(3 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  100% {
+    left: calc(3 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+}
+
+@keyframes square5 {
+  0% {
+    left: calc(3 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  50.00% {
+    left: calc(3 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  58.33% {
+    left: calc(3 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+
+  66.67% {
+    left: calc(2 * var(--offset));
+    top: calc(0 * var(--offset));
+  }
+
+  75.00% {
+    left: calc(2 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+
+  100% {
+    left: calc(2 * var(--offset));
+    top: calc(1 * var(--offset));
+  }
+}
+
+@keyframes squarefadein {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.0;
+  }
+
+  100% {
+    transform: scale(1.0);
+    opacity: 1.0;
+  }
 }

@@ -106,6 +106,8 @@ router.post("/orders/add", async (req, res) => {
   await pool.query(
     `UPDATE users SET idorder = idorder + 1 WHERE id = ${req.user.id}`
   );
+  const fecha = new Date();
+  const month = fecha.getMonth() + 1;
 
   const newOrder = {
     companyid: req.user.id,
@@ -114,6 +116,7 @@ router.post("/orders/add", async (req, res) => {
     pedido,
     procesado: 0,
     enviado: 0,
+    month,
   };
 
   const response = await pool.query("INSERT INTO orders set ?", [newOrder]);

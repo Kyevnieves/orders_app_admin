@@ -28,7 +28,7 @@
                     <input type="email" class="form-control" placeholder="Correo electronico" required name="companyemail">
                 </div>
                 <div class="col-md-6">
-                    <label for="image">Logo</label>
+                    <label for="image">Logo o imagen de empresa</label>
                     <input type="file" class="form-control inputFileUser" required name="image">
                     <input type="text" class="display-none user-img-url" name="companylogo">
                 </div>
@@ -36,42 +36,15 @@
                     <h5>Productos habilitados</h5>
                     <input type="text" class="inputProducts display-none" name="products" required>
                     <div class="container-product-cu">
-                        <div class="product" data-id="1">
-                            <img src="https://cdn.kyev.online/images/products/1a3efed0-0bb0-4df2-95ad-3e59d9b509e2.jpg" alt=""
+                        {{#each products}}
+                        <div class="product" data-id="{{id}}">
+                            <img src="{{productimg}}" alt=""
                                 style="width:130px;" class="product-img">
-                            <h5 class="product-title">Bombona 18kg</h5>
-                            <h6 class="product-cod">KG2550</h6>
+                            <h5 class="product-title">{{productname}}</h5>
+                            <h6 class="product-cod">{{productcod}}</h6>
                         </div>
-                        <div class="product" data-id="2">
-                            <img src="https://cdn.kyev.online/images/products/1a3efed0-0bb0-4df2-95ad-3e59d9b509e2.jpg" alt=""
-                                style="width:130px;">
-                            <h5 class="product-title">Bombona 18kg</h5>
-                            <h6 class="product-cod">KG2550</h6>
-                        </div>
-                        <div class="product" data-id="3">
-                            <img src="https://cdn.kyev.online/images/products/1a3efed0-0bb0-4df2-95ad-3e59d9b509e2.jpg" alt=""
-                                style="width:130px;">
-                            <h5 class="product-title">Bombona 18kg</h5>
-                            <h6 class="product-cod">KG2550</h6>
-                        </div>
-                        <div class="product" data-id="4">
-                            <img src="https://cdn.kyev.online/images/products/1a3efed0-0bb0-4df2-95ad-3e59d9b509e2.jpg" alt=""
-                                style="width:130px;">
-                            <h5 class="product-title">Bombona 18kg</h5>
-                            <h6 class="product-cod">KG2550</h6>
-                        </div>
-                        <div class="product" data-id="5">
-                            <img src="https://cdn.kyev.online/images/products/1a3efed0-0bb0-4df2-95ad-3e59d9b509e2.jpg" alt=""
-                                style="width:130px;">
-                            <h5 class="product-title">Bombona 18kg</h5>
-                            <h6 class="product-cod">KG2550</h6>
-                        </div>
-                        <div class="product" data-id="6">
-                            <img src="https://cdn.kyev.online/images/products/1a3efed0-0bb0-4df2-95ad-3e59d9b509e2.jpg" alt=""
-                                style="width:130px;">
-                            <h5 class="product-title">Bombona 18kg</h5>
-                            <h6 class="product-cod">KG2550</h6>
-                        </div>
+                        {{else}}
+                        {{/each}}
                     </div>
                 </div>
                 <div class="text-center">
