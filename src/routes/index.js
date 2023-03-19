@@ -80,12 +80,12 @@ const cantidadPedidosMensuales = async () => {
 };
 
 router.get("/", async (req, res) => {
-  const response = await pool.query("SELECT * FROM users WHERE id = 3 ");
-  const productsUser = response[0].products;
-  /* const products = await pool.query(
+  /* const response = await pool.query("SELECT * FROM users WHERE id = 3 ");
+     const productsUser = response[0].products;
+     const products = await pool.query(
     `SELECT * FROM products WHERE id IN ${productsUser}`
-  ); */
-  const products = await obtenerProductosDeUsuario(productsUser);
+  ); 
+  const products = await obtenerProductosDeUsuario(productsUser); */
   const reporteMensual = await cantidadPedidosMensuales();
   const reporteAnual = await obtenerCantidadPedidos();
   res.render("index", { reporteAnual, reporteMensual });
