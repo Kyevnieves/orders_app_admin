@@ -7,7 +7,6 @@ const formatearDate = (date) => {
   let dia = dateFormat.getDate();
   let mes = dateFormat.getMonth() + 1;
   let año = dateFormat.getFullYear();
-  console.log(dia, mes, año);
   let fechaFormateada = `${dia}/${mes}/${año}`;
   return fechaFormateada;
 };
